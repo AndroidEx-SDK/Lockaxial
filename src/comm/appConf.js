@@ -9,10 +9,12 @@ export default AppConf={
   //APPLICATION_SERVER:'https://zhsq00.sz.doubimeizhi.com', //创维服务器服务器连接地址
   //APPLICATION_SERVER:'http://residential.nodepointech.com', //测试服务器连接地址
   //APPLICATION_SERVER:'http://changbo.nodepointech.com', //测试服务器连接地址
-  APPLICATION_SERVER:'https://production.nodepointech.com', //测试服务器连接地址
+  //APPLICATION_SERVER:'https://production.nodepointech.com', //测试服务器连接地址
+  APPLICATION_SERVER:'http://www.lockaxial.com:3000', //测试服务器连接地址
+
 
   APPLICATION_ADS_DATA:{ //默认APP广告数据
-    main: [{img:require('../image/bannerFirst.jpg'),url:'www.nodepoint.cn'},{img:require('../image/bannerSecond.jpg'),url:'www.nodepoint.cn'}]
+    main: [{img:require('../image/bannerFirst.jpg'),url:'www.androidex.cn'},{img:require('../image/bannerSecond.jpg'),url:'www.androidex.cn'}]
   }
 }
 
