@@ -506,7 +506,7 @@ export default class ResidentMain extends SubScreen {
                             <MenuButton
                                 style={{flex:1,height:menuHeight,width:menuWidth,borderRightColor:'#F2F2F2',borderRightWidth:1}}
                                 title={'LockScreen'} icon="menjinguan"
-                                iconColor={this.state.rtcStatus==10?'#45c962':'#cacaca'}
+                                iconColor={this.state.rtcStatus==10?'#45c962':'#cacaca'}//cacaca
                                 onPress={()=>this.openLockScreen()}/>
                             <MenuButton
                                 style={{flex:1,height:menuHeight,width:menuWidth,borderRightColor:'#F2F2F2',borderRightWidth:1}}

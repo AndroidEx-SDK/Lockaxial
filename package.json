@@ -1,6 +1,6 @@
 {
-  "name": "Intermobile",
-  "version": "0.0.1",
+  "name": "lockaxial",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "configureJPush": "node node_modules/jpush-react-native/JPushConfiguration.js",
@@ -29,6 +29,7 @@
     "react-native-storage": "^0.1.4",
     "react-native-tab": "^1.0.0",
     "react-native-vector-icons": "^3.0.0",
+    "react-navigation": "0.0.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
