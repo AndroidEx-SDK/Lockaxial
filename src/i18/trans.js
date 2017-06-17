@@ -235,7 +235,7 @@ I18n.translations = {
     'PhotoScreen':'My Photo',
 
     'Q0':'About Us',
-    'Q0_A':'Shenzhen city node Technology Co., Ltd. focus on the wisdom of the community, is committed to creating a smart community life. The wisdom of the community is the companys operating platform for the whole platform of the whole community of intelligent community solutions. The top-level design based on mobile Internet, large data networking and three core technologies, is only able to Chinese intelligent security system hardware, smart and intelligent community property management of all media advertising and intelligent community life service platform and super intelligent housekeeper and a number of open platform is connected to the. We create a safer and more convenient way of life as a vision, the first in China through the mobile Internet technology and intelligent hardware combined model. To provide a new generation of intelligent vehicle management, intelligent access control, intelligent visitor management, intelligent video intercom management, intelligent elevator control hardware and Internet based mobile property system to implement seamless docking, provide a new intelligence community experience for community residents and property.',
+    'Q0_A':'Shenzhen city node AndroidEx Co., Ltd. focus on the wisdom of the community, is committed to creating a smart community life. The wisdom of the community is the companys operating platform for the whole platform of the whole community of intelligent community solutions. The top-level design based on mobile Internet, large data networking and three core technologies, is only able to Chinese intelligent security system hardware, smart and intelligent community property management of all media advertising and intelligent community life service platform and super intelligent housekeeper and a number of open platform is connected to the. We create a safer and more convenient way of life as a vision, the first in China through the mobile Internet technology and intelligent hardware combined model. To provide a new generation of intelligent vehicle management, intelligent access control, intelligent visitor management, intelligent video intercom management, intelligent elevator control hardware and Internet based mobile property system to implement seamless docking, provide a new intelligence community experience for community residents and property.',
     'Q1':'how to change the language for the APP',
     'Q1_A':'you need change the default language of the mobile phone in the setting pane, and then restart the APP'
   },
@@ -468,7 +468,7 @@ I18n.translations = {
     'PhotoScreen':'我的相框',
 
     'Q0':'关于我们',
-    'Q0_A':'深圳市结点科技有限公司聚焦智慧社区，致力于创造智慧社区生活。公司运营的智慧社区项目是全生态全平台智慧社区整体解决方案。其顶层设计基于移动互联网、物联网和大数据三大核心技术，是中国唯一能把智能安防硬件、智慧物业管理、智慧社区全媒体广告、智慧社区生活服务平台和超级智能管家等多个开放平台连接起来的系统。我们以创造更安全、更方便的生活方式为愿景，在国内首家通过移动互联技术与智能硬件相结合的模式。提供新一代智能车辆管理、智能门禁管理、智能访客管理、智能可视对讲管理、智能电梯控制等硬件设备和基于移动互联网的物业系统实行无缝对接，为社区居民及物业提供全新的智慧社区体验。',
+    'Q0_A':'深圳市安卓工控设备有限公司聚焦智慧社区，致力于创造智慧社区生活。公司运营的智慧社区项目是全生态全平台智慧社区整体解决方案。其顶层设计基于移动互联网、物联网和大数据三大核心技术，是中国唯一能把智能安防硬件、智慧物业管理、智慧社区全媒体广告、智慧社区生活服务平台和超级智能管家等多个开放平台连接起来的系统。我们以创造更安全、更方便的生活方式为愿景，在国内首家通过移动互联技术与智能硬件相结合的模式。提供新一代智能车辆管理、智能门禁管理、智能访客管理、智能可视对讲管理、智能电梯控制等硬件设备和基于移动互联网的物业系统实行无缝对接，为社区居民及物业提供全新的智慧社区体验。',
     'Q1':'如何修改APP的语言？',
     'Q1_A':'我们的APP支持国际化操作，您只需要在手机的设置中，修改当前的国家及语言，重启APP后即可'
   },
@@ -702,7 +702,7 @@ I18n.translations = {
     'PhotoScreen':'我的相框',
 
     'Q0':'關於我們',
-    'Q0_A':'深圳市結點科技有限公司聚焦智慧社區，致力於創造智慧社區生活。公司運營的智慧社區項目是全生態全平臺智慧社區整體解決方案。其頂層設計基於移動互聯網、物聯網和大數據三大核心技術，是中國唯一能把智慧安防硬體、智慧物業管理、智慧社區全媒體廣告、智慧社區生活服務平臺和超級智慧管家等多個開放平臺連接起來的系統。我們以創造更安全、更方便的生活方式為願景，在國內首家通過移動互聯科技與智慧硬體相結合的模式。提供新一代智慧車輛管理、智能門禁管理、智慧訪客管理、智慧可視對講管理、智慧電梯控制等硬體設備和基於移動互聯網的物業系統實行無縫對接，為社區居民及物業提供全新的智慧社區體驗。',
+    'Q0_A':'深圳市安卓工控设备有限公司聚焦智慧社區，致力於創造智慧社區生活。公司運營的智慧社區項目是全生態全平臺智慧社區整體解決方案。其頂層設計基於移動互聯網、物聯網和大數據三大核心技術，是中國唯一能把智慧安防硬體、智慧物業管理、智慧社區全媒體廣告、智慧社區生活服務平臺和超級智慧管家等多個開放平臺連接起來的系統。我們以創造更安全、更方便的生活方式為願景，在國內首家通過移動互聯科技與智慧硬體相結合的模式。提供新一代智慧車輛管理、智能門禁管理、智慧訪客管理、智慧可視對講管理、智慧電梯控制等硬體設備和基於移動互聯網的物業系統實行無縫對接，為社區居民及物業提供全新的智慧社區體驗。',
     'Q1':'如何修改APP的語言？',
     'Q1_A':'我們的APP支持國際化操作，您只需要在手機的設定中，修改當前的國家及語言，重啓APP後即可'
   }
