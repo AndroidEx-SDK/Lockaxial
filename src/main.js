@@ -1,6 +1,6 @@
 /**
-*页面注册
-*/
+ *页面注册
+ */
 import {Navigation} from 'react-native-navigation';
 
 import MapPane from './component/mapPane.js';
@@ -60,57 +60,57 @@ import DeviceScreen from './screen/deviceScreen';
 
 // 注册APP所需要用到的页面
 export function registerScreens() {
-  Navigation.registerComponent('MapPane', () => MapPane);
-  Navigation.registerComponent('ImageGallery', () => ImageGallery);
-  Navigation.registerComponent('InfoDialog', () => InfoDialog);
-  Navigation.registerComponent('ConfirmDialog', () => ConfirmDialog);
-  Navigation.registerComponent('InputDialog', () => InputDialog);
-  Navigation.registerComponent('InputScreen', () => InputScreen);
+    Navigation.registerComponent('MapPane', () => MapPane);
+    Navigation.registerComponent('ImageGallery', () => ImageGallery);
+    Navigation.registerComponent('InfoDialog', () => InfoDialog);
+    Navigation.registerComponent('ConfirmDialog', () => ConfirmDialog);
+    Navigation.registerComponent('InputDialog', () => InputDialog);
+    Navigation.registerComponent('InputScreen', () => InputScreen);
 
-  Navigation.registerComponent('ResidentMain', () => ResidentMain);
-  Navigation.registerComponent('CenterMain', () => CenterMain);
-  Navigation.registerComponent('BusinessMain', () => BusinessMain);
-  Navigation.registerComponent('LoginScreen', () => LoginScreen);
-  Navigation.registerComponent('RegisterScreen', () => RegisterScreen);
-  Navigation.registerComponent('ForumScreen', () => ForumScreen);
-  Navigation.registerComponent('UnitApplicationScreen', () => UnitApplicationScreen);
-  Navigation.registerComponent('UnitSwitchScreen', () => UnitSwitchScreen);
-  Navigation.registerComponent('UnitScreen', () => UnitScreen);
-  Navigation.registerComponent('UnitDetailScreen', () => UnitDetailScreen);
-  Navigation.registerComponent('UnitCarScreen', () => UnitCarScreen);
-  Navigation.registerComponent('UnitCityScreen', () => UnitCityScreen);
-  Navigation.registerComponent('UnitCommunityScreen', () => UnitCommunityScreen);
-  Navigation.registerComponent('UnitBlockScreen', () => UnitBlockScreen);
-  Navigation.registerComponent('UnitChooseScreen', () => UnitChooseScreen);
-  Navigation.registerComponent('NoticeScreen', () => NoticeScreen);
-  Navigation.registerComponent('NoticeDetailScreen', () => NoticeDetailScreen);
-  Navigation.registerComponent('LockScreen', () => LockScreen);
-  Navigation.registerComponent('LockHistoryScreen', () => LockHistoryScreen);
-  Navigation.registerComponent('VisitorAccessScreen', () => VisitorAccessScreen);
-  Navigation.registerComponent('VisitorCreateScreen', () => VisitorCreateScreen);
-  Navigation.registerComponent('AdviceScreen', () => AdviceScreen);
-  Navigation.registerComponent('AdviceCreateScreen', () => AdviceCreateScreen);
-  Navigation.registerComponent('AdviceDetailScreen', () => AdviceDetailScreen);
-  Navigation.registerComponent('TroubleScreen', () => TroubleScreen);
-  Navigation.registerComponent('TroubleCreateScreen', () => TroubleCreateScreen);
-  Navigation.registerComponent('TroubleDetailScreen', () => TroubleDetailScreen);
-  Navigation.registerComponent('ContactScreen', () => ContactScreen);
-  Navigation.registerComponent('BillScreen', () => BillScreen);
-  Navigation.registerComponent('BillHistoryScreen', () => BillHistoryScreen);
-  Navigation.registerComponent('BillDetailScreen', () => BillDetailScreen);
-  Navigation.registerComponent('ChangePasswordScreen', () => ChangePasswordScreen);
-  Navigation.registerComponent('HelpScreen', () => HelpScreen);
-  Navigation.registerComponent('AboutScreen', () => AboutScreen);
-  Navigation.registerComponent('UserDetailScreen', () => UserDetailScreen);
-  Navigation.registerComponent('TopicDetailScreen', () => TopicDetailScreen);
-  Navigation.registerComponent('TopicEditScreen', () => TopicEditScreen);
-  Navigation.registerComponent('ReplyEditScreen', () => ReplyEditScreen);
-  Navigation.registerComponent('ReplyScreen', () => ReplyScreen);
-  Navigation.registerComponent('ShopDetailScreen', () => ShopDetailScreen);
-  Navigation.registerComponent('PromotionDetailScreen', () => PromotionDetailScreen);
-  Navigation.registerComponent('GoodsDetailScreen', () => GoodsDetailScreen);
-  Navigation.registerComponent('CouponDetailScreen', () => CouponDetailScreen);
-  Navigation.registerComponent('CouponScreen', () => CouponScreen);
-  Navigation.registerComponent('PhotoScreen', () => PhotoScreen);
-  Navigation.registerComponent('DeviceScreen', () => DeviceScreen);
+    Navigation.registerComponent('ResidentMain', () => ResidentMain);
+    Navigation.registerComponent('CenterMain', () => CenterMain);
+    Navigation.registerComponent('BusinessMain', () => BusinessMain);
+    Navigation.registerComponent('LoginScreen', () => LoginScreen);
+    Navigation.registerComponent('RegisterScreen', () => RegisterScreen);
+    Navigation.registerComponent('ForumScreen', () => ForumScreen);
+    Navigation.registerComponent('UnitApplicationScreen', () => UnitApplicationScreen);
+    Navigation.registerComponent('UnitSwitchScreen', () => UnitSwitchScreen);
+    Navigation.registerComponent('UnitScreen', () => UnitScreen);
+    Navigation.registerComponent('UnitDetailScreen', () => UnitDetailScreen);
+    Navigation.registerComponent('UnitCarScreen', () => UnitCarScreen);
+    Navigation.registerComponent('UnitCityScreen', () => UnitCityScreen);
+    Navigation.registerComponent('UnitCommunityScreen', () => UnitCommunityScreen);
+    Navigation.registerComponent('UnitBlockScreen', () => UnitBlockScreen);
+    Navigation.registerComponent('UnitChooseScreen', () => UnitChooseScreen);
+    Navigation.registerComponent('NoticeScreen', () => NoticeScreen);
+    Navigation.registerComponent('NoticeDetailScreen', () => NoticeDetailScreen);
+    Navigation.registerComponent('LockScreen', () => LockScreen);
+    Navigation.registerComponent('LockHistoryScreen', () => LockHistoryScreen);
+    Navigation.registerComponent('VisitorAccessScreen', () => VisitorAccessScreen);
+    Navigation.registerComponent('VisitorCreateScreen', () => VisitorCreateScreen);
+    Navigation.registerComponent('AdviceScreen', () => AdviceScreen);
+    Navigation.registerComponent('AdviceCreateScreen', () => AdviceCreateScreen);
+    Navigation.registerComponent('AdviceDetailScreen', () => AdviceDetailScreen);
+    Navigation.registerComponent('TroubleScreen', () => TroubleScreen);
+    Navigation.registerComponent('TroubleCreateScreen', () => TroubleCreateScreen);
+    Navigation.registerComponent('TroubleDetailScreen', () => TroubleDetailScreen);
+    Navigation.registerComponent('ContactScreen', () => ContactScreen);
+    Navigation.registerComponent('BillScreen', () => BillScreen);
+    Navigation.registerComponent('BillHistoryScreen', () => BillHistoryScreen);
+    Navigation.registerComponent('BillDetailScreen', () => BillDetailScreen);
+    Navigation.registerComponent('ChangePasswordScreen', () => ChangePasswordScreen);
+    Navigation.registerComponent('HelpScreen', () => HelpScreen);
+    Navigation.registerComponent('AboutScreen', () => AboutScreen);
+    Navigation.registerComponent('UserDetailScreen', () => UserDetailScreen);
+    Navigation.registerComponent('TopicDetailScreen', () => TopicDetailScreen);
+    Navigation.registerComponent('TopicEditScreen', () => TopicEditScreen);
+    Navigation.registerComponent('ReplyEditScreen', () => ReplyEditScreen);
+    Navigation.registerComponent('ReplyScreen', () => ReplyScreen);
+    Navigation.registerComponent('ShopDetailScreen', () => ShopDetailScreen);
+    Navigation.registerComponent('PromotionDetailScreen', () => PromotionDetailScreen);
+    Navigation.registerComponent('GoodsDetailScreen', () => GoodsDetailScreen);
+    Navigation.registerComponent('CouponDetailScreen', () => CouponDetailScreen);
+    Navigation.registerComponent('CouponScreen', () => CouponScreen);
+    Navigation.registerComponent('PhotoScreen', () => PhotoScreen);
+    Navigation.registerComponent('DeviceScreen', () => DeviceScreen);
 }
