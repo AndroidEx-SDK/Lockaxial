@@ -60,12 +60,12 @@ export default class App {
                 icon: housekeeperIcon,
                 selectedIcon: housekeeperIcon
             },
-            // {
-            //   label:trans('community forum'),
-            //   screen: 'ForumMain',
-            //   icon: forumIcon,
-            //   selectedIcon: require('./image/three_selected.png')
-            // },
+             //{
+             //  label:trans('community forum'),
+             //  screen: 'ForumMain',
+             //  icon: forumIcon,
+             //  selectedIcon: require('./image/three_selected.png')
+             //},
             {
                 label: trans('business'),
                 screen: 'BusinessMain',
