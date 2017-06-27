@@ -63,6 +63,7 @@ export default class VisitorCreateScreen extends NormalScreen {
         lockName:choosedLock.lockName,
         lockSN:choosedLock.lockSN,
         lockType:choosedLock.lockType,
+        unitId:accountDao.userInfo.unitId,
         endDate:Format.fromDateToStr(_this.state.endDate,"yyyy-MM-dd hh:mm:ss")
     };
     visitorAccessDao.save(newKey,function(result){

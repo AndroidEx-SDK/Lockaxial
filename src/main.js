@@ -89,7 +89,7 @@ export function registerScreens() {
     Navigation.registerComponent('VisitorAccessScreen', () => VisitorAccessScreen);//访客通行
     Navigation.registerComponent('VisitorCreateScreen', () => VisitorCreateScreen);//创建访客密码页面
     Navigation.registerComponent('AdviceScreen', () => AdviceScreen);//访客通行
-    Navigation.registerComponent('AdviceCreateScreen', () => AdviceCreateScreen);//创建访客密码页面
+    Navigation.registerComponent('AdviceCreateScreen', () => AdviceCreateScreen);//业主建议搜集页面
     Navigation.registerComponent('AdviceDetailScreen', () => AdviceDetailScreen);//物业公告详情页面
     Navigation.registerComponent('TroubleScreen', () => TroubleScreen);//维修申报页面
     Navigation.registerComponent('TroubleCreateScreen', () => TroubleCreateScreen);//创建维修申报页面

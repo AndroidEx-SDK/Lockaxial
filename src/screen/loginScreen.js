@@ -25,7 +25,8 @@ export default class LoginScreen extends NormalScreen {
   constructor(props) {
     super(props);
     this.state={
-      account:accountDao.account
+      account:accountDao.account,
+      deviceUuid:"aaaaaaaaaa"
     };
   }
 
@@ -38,7 +39,7 @@ export default class LoginScreen extends NormalScreen {
       toastX(MSG_USER_ERROR);
       return;
     }
-    accountDao.login(this.state.account.username,this.state.account.password,function(result){
+    accountDao.login(this.state.account.username,this.state.account.password,this.state.deviceUuid,function(result){
       if(result.code==0){
         _this.back();
       }else if(result.code==1){

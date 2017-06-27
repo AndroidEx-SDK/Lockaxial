@@ -165,9 +165,9 @@ export class AccountDao extends BaseDao {
     /**
      *根据用户名及密码登陆系统
      */
-    login(username, password, cb) {
+    login(username, password,deviceUuid ,cb) {
         var _this = this;
-        auth.login(username, password, function (result) {
+        auth.login(username, password,deviceUuid, function (result) {
             if (result.code == 0) {
                 ajax.token = result.token;
                 _this.account.username = username;
