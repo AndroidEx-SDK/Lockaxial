@@ -78,7 +78,9 @@ export default class AdsBanner extends Component {
     return (
       <View style={this.state.size} onLayout={(e)=>this.onLayoutDidChange(e)}>
         <Carousel style={[this.state.size,{position:'absolute',left:0,top:0}]} autoplay>
-          {this.state.adsList.map((item,i)=>this.renderItem(item,i))}
+          <View>
+            {this.state.adsList.map((item,i)=>this.renderItem(item,i))}
+          </View>
         </Carousel>
         <UnitBar style={{position:'absolute',left:0,top:0}} onPress={()=>this.subComponentOnPress()}/>
       </View>
@@ -94,8 +96,7 @@ export default class AdsBanner extends Component {
       convertedImage={uri:convertedImage};
     }
     return(
-      <Image style={this.state.size} key={i} source={convertedImage}>
-      </Image>
+      <Image style={this.state.size} key={i} source={convertedImage}></Image>
     );
   }
 }

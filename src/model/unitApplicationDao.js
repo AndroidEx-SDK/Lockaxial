@@ -20,6 +20,7 @@ export class UnitApplicationDao extends BaseDao {
     city:null,
     communityId:0,
     communityName:null,
+    needIdentity:'N',
     blockId:0,
     blockName:null,
     blockNo:null,
@@ -41,6 +42,7 @@ export class UnitApplicationDao extends BaseDao {
       city:null,
       communityId:0,
       communityName:null,
+      needIdentity:'N',
       blockId:0,
       blockName:null,
       blockNo:null,
@@ -191,6 +193,7 @@ export class UnitApplicationDao extends BaseDao {
       this.choosedData.city=this.cityList[index].city;
       this.choosedData.communityId=0;
       this.choosedData.communityName=null;
+      this.choosedData.needIdentity='N';
       this.communityList=[];
       this.choosedData.blockId=0;
       this.choosedData.blockName=null;
@@ -211,6 +214,7 @@ export class UnitApplicationDao extends BaseDao {
     if(this.communityList[index].rid!=this.choosedData.communityId){
       this.choosedData.communityId=this.communityList[index].rid;
       this.choosedData.communityName=this.communityList[index].communityName;
+      this.choosedData.needIdentity=this.communityList[index].needIdentity;
       this.choosedData.blockId=0;
       this.choosedData.blockName=null;
       this.choosedData.blockNo=null;

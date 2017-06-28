@@ -1,5 +1,5 @@
 /**
-*登录页面,当检测未登录时，显示此页面进行登录
+*创建房屋附属成员
 */
 import React, { Component } from 'react';
 import {
@@ -7,42 +7,22 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 
-import SmsVerifyWidget from '../component/smsVerifyWidget';
 import NormalScreen from './normalScreen';
 import MainStyle from '../style/mainStyle';
 import trans from '../i18/trans';
 import {toast,toastX} from '../util/tools';
 import accountDao from '../model/accountDao';
-import {auth} from '../comm/appConf';
-import Format from '../util/format';
 
-const LABEL_MOBILE='mobile';
-const LABEL_PASSWORD='password';
-const LABEL_REPASSWORD='repassword';
-const LABEL_VERIFY_CODE='verify code';
 const LABEL_REALNAME='realname';
 const LABEL_REGISTER='register';
-const MSG_NEED_USER='need account';
-const MSG_NEED_PASSWORD='need password';
-const MSG_NOTSAME_PASSWORD='not same password';
 const MSG_NEED_REALNAME='need realname';
-const MSG_NEED_CODE='must input code';
-const MSG_WRONG_CODE='wrong code';
-const MSG_DUPLICATED_ACCOUNT='duplicated account';
-const MSG_REGISTER_SUCCESS='register success';
-const MSG_WRONG_MOBILE='wrong mobile';
-const MSG_WRONG_MOBILE_LENGTH='wrong mobile len';
 
-export default class RegisterScreen extends NormalScreen {
+export default class UnitMemberScreen extends NormalScreen {
   constructor(props) {
     super(props);
     this.state={
       account:{
-        mobile:"",
-        realname:"",
-        password:"",
-        repassword:"",
-        code:""
+        realname:""
       }
     };
   }

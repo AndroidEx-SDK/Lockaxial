@@ -85,7 +85,7 @@ export default class CouponMain extends SubListScreen {
           renderFooter={()=>this.renderRooter()}
           renderRow={(item, sectionID, rowID) =>
             <CouponPane type="list" key={rowID} size={{width:3,height:2}}
-               couponId={item.rid} screen={this.props.screen}>
+               couponId={item.couponId} screen={this.props.screen}>
             </CouponPane>
           }>
         </ListView>

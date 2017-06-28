@@ -7,6 +7,7 @@ import Format from '../util/format';
 
 export class ContactDao extends BaseDao {
   list=[]; //联系物业列表
+  adminDeviceList=[]; //管理中心机列表
 
   constructor() {
     super();
@@ -21,6 +22,9 @@ export class ContactDao extends BaseDao {
       if (result.code == 0) {
         for (var i = 0; i < result.data.length; i++) {
           _this.list.push(result.data[i]);
+        }
+        for (var i = 0; i < result.adminDeviceList.length; i++) {
+          _this.adminDeviceList.push(result.adminDeviceList[i]);
         }
       }
       if(cb){cb(result);}

@@ -71,7 +71,12 @@ export default class VisitorAccessScreen extends NormalListScreen {
   */
   shareKey(rowID){
     let item=visitorAccessDao.list[rowID];
-    let message=item.lockName+":"+item.tempkey+"("+trans('to')+item.endDate+")";
+    let message="";
+    if(item.enterTime>=0){
+      message=trans('visitor password')+":"+item.tempkey+"("+trans('times limit')+item.enterTime+")";
+    }else{
+      message=trans('visitor password')+":"+item.tempkey+"("+trans('to')+item.endDate+")";
+    }
     //this.ActionSheet.show();
     Share.share({
       message:message
@@ -120,8 +125,13 @@ export default class VisitorAccessScreen extends NormalListScreen {
                       rightIcon={{name:'fenxiang',type:'iconfont'}}
                       subtitle={
                         <View style={MainStyle.subtitleView}>
-                          <Text style={MainStyle.subtitleText}>{item.lockName}</Text>
-                          <Text style={MainStyle.subtitleText}>{Filter.datetimeFilter(item.startDate)+trans('to')+Filter.datetimeFilter(item.endDate)}</Text>
+                          {
+                            item.enterTime>=0?(
+                              <Text style={MainStyle.subtitleText}>{trans('can use')+item.enterTime+trans('times')}</Text>
+                            ):(
+                              <Text style={MainStyle.subtitleText}>{Filter.datetimeFilter(item.startDate)+trans('to')+Filter.datetimeFilter(item.endDate)}</Text>
+                            )
+                          }
                         </View>
                       }
                       >

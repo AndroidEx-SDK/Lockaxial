@@ -47,10 +47,6 @@ export default class CouponDetailScreen extends NormalScreen {
     }
   }
 
-  doUseCoupon(){
-    couponDao.doUseCoupon(this.state.item.code+'-'+this.state.item.rid);
-  }
-
   render() {
     return (
       <ScrollView style={MainStyle.screen}>
@@ -70,7 +66,7 @@ export default class CouponDetailScreen extends NormalScreen {
           </View>
           <View style={{paddingTop:15,borderTopColor:'#F2F2F2',borderTopWidth:1,alignItems: 'center',justifyContent: 'center'}}>
             <QRCode
-              value={this.state.item.code+'-'+this.state.item.rid}
+              value={this.state.item.code}
               size={200}
               bgColor='#000000'
               fgColor='white'/>

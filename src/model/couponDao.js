@@ -47,7 +47,7 @@ export class CouponDao extends BaseDao {
   getItem(couponId){
     let item=null;
     for(let i=0;i<this.list.length;i++){
-      if(this.list[i].rid==couponId){
+      if(this.list[i].couponId==couponId){
         item=this.list[i];
         break;
       }

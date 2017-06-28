@@ -52,6 +52,25 @@ export default class UnitDao extends BaseDao {
   /**
   *保存房屋的车牌
   */
+  saveUnitMember(realname,cb){
+    let _this=this;
+    var member={realname:realname,mobile:accountDao.userDetail.mobile,cardType:"S"};
+    var memberUnit={communityId:this.item.communityId,unitId:this.item.rid};
+    ajax.post('/unit/saveUnitMember',{member:member,memberUnit:memberUnit},function(result){
+      if(result.code==0){
+        member.rid=result.insertId;
+        member.userType='F';
+        member.communityId=memberUnit.communityId;
+        member.unitId=memberUnit.unitId;
+        _this.unitMemberList.push(member);
+      }
+      if(cb){cb(result.code)}
+    });
+  }
+
+  /**
+  *保存房屋的车牌
+  */
   saveUnitCar(carNo,cb){
     let _this=this;
     carNo=carNo.toUpperCase();
@@ -91,6 +110,33 @@ export default class UnitDao extends BaseDao {
       if(result.code==0){
         accountDao.refreshApplicationData();
       }
+      if(cb){cb(result)}
+    });
+  }
+
+  /**
+  *获取停车记录
+  */
+  retrieveCarHistory(carId,cb){
+    ajax.get('/unit/retrieveCarHistory',{carId:carId},function(result){
+      if(cb){cb(result)}
+    });
+  }
+
+  /**
+  *锁定车辆
+  */
+  lockCar(carId,orderNo,cb){
+    ajax.get('/unit/lockCar',{carId:carId,orderNo:orderNo},function(result){
+      if(cb){cb(result)}
+    });
+  }
+
+  /**
+  *解除锁定车辆
+  */
+  unlockCar(carId,orderNo,cb){
+    ajax.get('/unit/unlockCar',{carId:carId,orderNo:orderNo},function(result){
       if(cb){cb(result)}
     });
   }

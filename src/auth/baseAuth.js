@@ -8,10 +8,11 @@ export default class BaseAuth{
   /**
   *登陆系统
   */
-  login(username,password,cb){
+  login(username,password,deviceUuid,cb){
     ajax.post('/auth/login', {
       username:username,
-      password:password
+      password:password,
+      deviceUuid:deviceUuid
     },function (result) {
         if(cb){cb(result)};
     });
@@ -33,6 +34,17 @@ export default class BaseAuth{
   */
   changePassword(userInfo,cb){
     ajax.post('/user/saveUser', {
+      user: userInfo
+    }, function (result) {
+      if(cb){cb(result)};
+    });
+  }
+
+  /**
+   *注册用户
+   */
+  changeAccount(userInfo,cb){
+    ajax.post('/user/changeAccount', {
       user: userInfo
     }, function (result) {
       if(cb){cb(result)};

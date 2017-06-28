@@ -105,7 +105,7 @@ export default class TopicMain extends SubListScreen {
 
   render() {
     return(
-      <View>
+      <View style={{paddingBottom:30}}>
         <TouchableOpacity onPress={()=>this.createTopic()}><View style={{flexDirection:'row',marginLeft:16,alignItems:'center'}}><Icon name='xinjian' size={18} color='#007aff'/><Text style={{paddingTop:10,paddingLeft:8,paddingBottom:10,paddingRight:10,color:'#007aff'}}>{trans(LABEL_CREATE)}</Text></View></TouchableOpacity>
         <ListView
           enableEmptySections

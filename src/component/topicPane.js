@@ -15,11 +15,9 @@ import {toastX} from '../util/tools';
 import forumDao from '../model/forumDao';
 
 export default class TopicPane extends Component {
-  topicDao=null;
-
   constructor(props) {
     super(props);
-    this.topicDao=forumDao.getTopicDao(props.forumId);
+    let topicDao=forumDao.getTopicDao(props.forumId);
     this.state={
     }
   }
@@ -55,7 +53,8 @@ export default class TopicPane extends Component {
 
   switchTopicLikes(){
     let _this=this;
-    this.topicDao.switchTopicLikes(this.props.item.rid,function(result){
+    let topicDao=forumDao.getTopicDao(this.props.forumId);
+    topicDao.switchTopicLikes(this.props.item.rid,function(result){
       if(result.code==0){
         //_this.setState(_this.state);
       }else{

@@ -1,9 +1,9 @@
 /**
-*房屋明细页面
+*房屋车辆明细页面
 */
 import React, { Component } from 'react';
 import {
-  View,Text,TouchableOpacity
+  View,Text,TouchableOpacity,DeviceEventEmitter
 } from 'react-native';
 import {List,ListItem} from 'react-native-elements';
 
@@ -35,6 +35,30 @@ export default class UnitCarScreen extends NormalScreen {
         _this.loadData();
       }
     });
+  }
+
+  /**
+   *当此组件中显示完成后，注册事件侦听，当公告信息产生变化时，更新显示
+   */
+  componentDidMount() {
+      this.subscription= DeviceEventEmitter.addListener('unitCarListChanged', (data)=>this.unitCarListChanged(data)); //注册一个changeBillProfile消息，触发该消息时提示
+  }
+
+  /**
+   *组件删除后，一并删除事件侦听
+   */
+  componentWillUnmount() {
+      this.subscription.remove(); //页面销毁时注销消息事件
+  }
+
+  unitCarListChanged(data){
+    for(let i=0;i<this.unitDao.unitCarList.length;i++){
+      if(this.unitDao.unitCarList[i].rid==data.carId){
+        this.unitDao.unitCarList[i].carStatus=data.carStatus;
+        break;
+      }
+    }
+    loadData();
   }
 
   /**
@@ -78,6 +102,13 @@ export default class UnitCarScreen extends NormalScreen {
     });
   }
 
+  lockOrUnlock(item){
+    this.openScreen("UnitCarHistoryScreen",{
+      carId:item.rid,
+      carStatus:item.carStatus
+    });
+  }
+
   render() {
     return (
       <View style={MainStyle.screen}>
@@ -98,6 +129,13 @@ export default class UnitCarScreen extends NormalScreen {
                     {
                        (l.state=='N'||l.state=='P')?(
                             <TouchableOpacity onPress={()=>this.deleteCar(i)}><Text style={MainStyle.innerLink}>{trans('delete')}</Text></TouchableOpacity>
+                        ) : (
+                            null
+                        )
+                    }
+                    {
+                       (l.state=='N')?(
+                            <TouchableOpacity onPress={()=>this.lockOrUnlock(l)}><Text style={MainStyle.innerLink}>{trans('lockOrUnlock')}</Text></TouchableOpacity>
                         ) : (
                             null
                         )

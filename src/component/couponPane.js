@@ -29,9 +29,15 @@ export default class CouponPane extends Component {
 
   openCouponDetail(){
     if(this.props.type=='list'){
-      this.props.screen.openScreen('CouponDetailScreen',{
-        couponId:this.state.item.rid
-      });
+      if(this.state.item.couponStatus==1){
+        this.props.screen.openScreen('CouponDetailScreen',{
+          couponId:this.state.item.couponId
+        });
+      }else if(this.state.item.couponStatus==2){
+        toastX('used coupon');
+      }else{
+        toastX('invalid coupon');
+      }
     }
   }
 

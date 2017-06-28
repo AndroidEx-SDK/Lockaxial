@@ -20,6 +20,12 @@ export class VisitorAccessDao extends BaseDao {
     ajax.get('/unit/retrieveTempKeyList',{arrayLength:_this.list.length},function(result){
       if (result.code == 0) {
         for (var i = 0; i < result.data.length; i++) {
+          if(result.data[i].realname){
+            result.data[i].realname="";
+          }
+          if(result.data[i].mobile){
+            result.data[i].mobile="";
+          }
           _this.list.push(result.data[i]);
         }
       }

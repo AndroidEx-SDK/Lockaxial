@@ -5,10 +5,11 @@ import ajax from '../util/ajax';
 import {toast,toastX} from '../util/tools';
 
 export default class SkyworthAuth{
-  login(username,password,cb){
+  login(username,password,deviceUuid,cb){
     ajax.post('/skyworth/login', {
       username:username,
-      password:password
+      password:password,
+      deviceUuid:deviceUuid
     },function (result) {
         if(cb){cb(result)};
     });

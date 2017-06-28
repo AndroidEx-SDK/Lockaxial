@@ -17,6 +17,7 @@ const LABEL_COUPON_INFO='coupon info';
 const LABEL_MY_UNIT='UnitScreen';
 const LABEL_MY_PHOTO='PhotoScreen';
 const LABEL_CHANGE_PASSWORD='change password';
+const LABEL_CHANGE_ACCOUNT='change account';
 const LABEL_LOGOUT='logout';
 const LABEL_ABOUT_US='about us';
 const LABEL_HELP='help';
@@ -104,6 +105,13 @@ export default class ResidentMain extends SubScreen {
   }
 
   /**
+   *打开账户修改页面
+   */
+  openChangeAccountScreen(){
+    this.openScreenWithAuth('ChangeAccountScreen');
+  }
+
+  /**
   *打开帮助页面
   */
   openHelpScreen(){
@@ -153,6 +161,7 @@ export default class ResidentMain extends SubScreen {
             <ListItem title={trans(LABEL_MY_UNIT)} leftIcon={{name:'icon-test',type:'iconfont'}} onPress={()=>this.openUnitScreen()}/>
             <ListItem title={trans(LABEL_MY_PHOTO)} leftIcon={{name:'fangkexinxi',type:'iconfont'}} onPress={()=>this.openDeviceScreen()}/>
             <ListItem title={trans(LABEL_CHANGE_PASSWORD)} leftIcon={{name:'xiugaimima',type:'iconfont'}} onPress={()=>this.openChangePasswordScreen()}/>
+            <ListItem title={trans(LABEL_CHANGE_ACCOUNT)} leftIcon={{name:'guanyuwomen',type:'iconfont'}} onPress={()=>this.openChangeAccountScreen()}/>
             <ListItem title={trans(LABEL_HELP)} leftIcon={{name:'bangzhu',type:'iconfont'}} onPress={()=>this.openHelpScreen()}/>
             <ListItem title={trans(LABEL_LOGOUT)} leftIcon={{name:'tuichu',type:'iconfont'}} onPress={()=>this.logout()}/>
           </List>

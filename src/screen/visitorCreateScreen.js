@@ -3,9 +3,9 @@
 */
 import React, { Component } from 'react';
 import {
-  TouchableOpacity,View,Picker,Text
+  TouchableOpacity,View,Picker,Text,TextInput
 } from 'react-native';
-import {FormInput,Button,FormLabel } from 'react-native-elements';
+import {ButtonGroup,Button} from 'react-native-elements';
 import DatetimeWidget from '../component/datetimeWidget';
 
 import NormalScreen from './normalScreen';
@@ -25,11 +25,11 @@ export default class VisitorCreateScreen extends NormalScreen {
   constructor(props) {
     super(props);
     this.state={
-      lockId:0,
+      tabIndex:0,
+      realname:'',
+      mobile:'',
+      enterTime:1,
       endDate:new Date(new Date().getTime()+7*24*60*60*1000)
-    }
-    if(accountDao.communityLockList.length>0){
-      this.state.lockId=accountDao.communityLockList[0].rid;
     }
   }
 
@@ -38,32 +38,26 @@ export default class VisitorCreateScreen extends NormalScreen {
   */
   saveTemppKey(){
     let _this=this;
-    if((_this.state.endDate.getTime()-new Date().getTime())>1000*60*60*24*7){
-        _this.openInfoDialog(null,"结束时间必须在7天内");
-        return;
-    }
-
-    function findLockById(lockId){
-        for(var i=0;i<accountDao.communityLockList.length;i++){
-            if(accountDao.communityLockList[i].rid==lockId){
-                return accountDao.communityLockList[i];
-            }
-        }
-    }
-    var choosedLock=findLockById(_this.state.lockId);
-    if(!choosedLock){
-        _this.openInfoDialog(null,"请选择门禁");
-        return;
+    if(this.state.tabIndex==0){
+      if(!_this.state.enterTime||_this.state.enterTime<0){
+          _this.openInfoDialog(null,trans('times limit large than 1'));
+          return;
+      }
+    }else{
+      if((_this.state.endDate.getTime()-new Date().getTime())>1000*60*60*24*7){
+          _this.openInfoDialog(null,trans('peroid limit in 7 days'));
+          return;
+      }
     }
     var newKey={
-        communityId:accountDao.currentUnit.communityId,
+        communityId:accountDao.userInfo.communityId,
         userId:accountDao.userInfo.rid,
-        state:"N",
-        lockId:_this.state.lockId,
-        lockName:choosedLock.lockName,
-        lockSN:choosedLock.lockSN,
-        lockType:choosedLock.lockType,
         unitId:accountDao.userInfo.unitId,
+        unitNo:accountDao.currentUnit.unitNo,
+        state:"N",
+        realname:this.state.realname,
+        mobile:this.state.mobile,
+        enterTime:this.state.enterTime,
         endDate:Format.fromDateToStr(_this.state.endDate,"yyyy-MM-dd hh:mm:ss")
     };
     visitorAccessDao.save(newKey,function(result){
@@ -77,9 +71,34 @@ export default class VisitorCreateScreen extends NormalScreen {
     });
   }
 
-  chooseLock(lockId){
-    this.state.lockId=lockId;
+  onRealnameChange(text){
+    this.state.realname=text;
     this.setState(this.state);
+  }
+
+  onMobileChange(text){
+    this.state.mobile=text;
+    this.setState(this.state);
+  }
+
+  onEnterTimeChange(text){
+    this.state.enterTime=parseInt(text);
+    if(!this.state.enterTime){
+      this.state.enterTime="";
+    }
+    this.setState(this.state);
+  }
+
+  onSwitchType(index){
+    if(this.state.tabIndex!=index){
+      this.state.tabIndex=index;
+      if(index==0){
+        this.state.enterTime=1;
+      }else{
+        this.state.enterTime=-1;
+      }
+      this.setState(this.state);
+    }
   }
 
   chooseDatetime(date){
@@ -90,18 +109,24 @@ export default class VisitorCreateScreen extends NormalScreen {
   render() {
     return (
       <View style={MainStyle.screen}>
-        <Picker style={MainStyle.selection}
-          selectedValue={this.state.lockId}
-          onValueChange={(lockId)=>this.chooseLock(lockId)}>
-          {
-            accountDao.communityLockList.map((item,i)=>
-              <Picker.Item label={item.lockName} key={i} value={item.rid}/>
-            )
-          }
-        </Picker>
-        <DatetimeWidget date={this.state.endDate} mode="datetime" onChange={(date)=>this.chooseDatetime(date)}/>
-        <View style={{padding:10}}><Button buttonStyle={{borderRadius:8,backgroundColor:'#006DCC'}} onPress={()=>this.saveTemppKey()} title={trans(LABEL_CONFIRM)}/></View>
-        <View style={{padding:10}}><Button buttonStyle={{borderRadius:8}} onPress={()=>this.back()} title={trans(LABEL_CANCEL)}/></View>
+        <TextInput style={MainStyle.textInput} maxLength={15} placeholder={trans('realname')} style={MainStyle.textInput} onChangeText={(text)=>this.onRealnameChange(text)}/>
+        <TextInput style={MainStyle.textInput} maxLength={11} placeholder={trans('mobile')} style={MainStyle.textInput} onChangeText={(text)=>this.onMobileChange(text)}/>
+        <ButtonGroup
+          onPress={(index)=>this.onSwitchType(index)}
+          selectedIndex={this.state.tabIndex}
+          buttons={[trans('times limit'),trans('peroid limit')]}
+          containerStyle={{height: 30}} />
+        {
+          this.state.tabIndex==0?(
+            <TextInput style={MainStyle.textInput} maxLength={2} value={""+this.state.enterTime} placeholder={trans('can use')} style={MainStyle.textInput} onChangeText={(text)=>this.onEnterTimeChange(text)}/>
+          ):(
+            <DatetimeWidget date={this.state.endDate} mode="datetime" onChange={(date)=>this.chooseDatetime(date)}/>
+          )
+        }
+        <View style={{paddingTop:10,paddingLeft:5,paddingRight:5,flexDirection:'row',alignItems:'center'}}>
+          <View style={{flex:1}}><Button onPress={()=>this.back()} title={trans(LABEL_CANCEL)}/></View>
+          <View style={{flex:1}}><Button backgroundColor='#007aff' onPress={()=>this.saveTemppKey()} title={trans(LABEL_CONFIRM)}/></View>
+        </View>
       </View>
     );
   }

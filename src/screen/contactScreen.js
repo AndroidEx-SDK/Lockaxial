@@ -3,13 +3,14 @@
 */
 import React, { Component } from 'react';
 import {
-  View,ListView,Text
+  View,ListView,Text,TouchableOpacity
 } from 'react-native';
-import {List,ListItem} from 'react-native-elements';
+import {List,ListItem,Button} from 'react-native-elements';
 import Communications from 'react-native-communications';
 
 import NormalListScreen from './normalListScreen';
 import trans from '../i18/trans';
+import reactBridge from '../bridge/reactBridge';
 import {toastX,toast} from '../util/tools';
 import MainStyle from '../style/mainStyle';
 import contactDao from '../model/contactDao';
@@ -60,9 +61,22 @@ export default class ContactScreen extends NormalListScreen {
     Communications.phonecall(item.tel,true);
   }
 
+  openAdminCenter(){
+    let deviceMac=contactDao.adminDeviceList[0].deviceMac;
+    deviceMac = deviceMac.replace(/\:/g, '');
+    reactBridge.sendMainMessage(50002, deviceMac);
+  }
+
   render() {
     return (
       <View style={MainStyle.screen}>
+        {
+          contactDao.adminDeviceList.length>0?(
+            <View style={{paddingTop:10,paddingBottom:10,paddingLeft:5,paddingRight:5,flexDirection:'row',alignItems:'center'}}>
+              <View style={{flex:1}}><Button backgroundColor='#007aff' onPress={()=>this.openAdminCenter()} title={trans("admin center")}/></View>
+            </View>
+          ):(null)
+        }
         <List containerStyle={MainStyle.list}>
           <ListView
             enableEmptySections

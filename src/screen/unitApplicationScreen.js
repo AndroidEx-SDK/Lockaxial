@@ -24,6 +24,7 @@ const LABEL_UNIT="unit";
 const LABEL_APPLICATION="application info";
 const LABEL_NAME="name";
 const LABEL_MOBILE="mobile";
+const LABEL_IDENTIFY="identify";
 const LABEL_USER_TYPE="user type";
 const LABEL_OWNER='owner';
 const LABEL_FAMILY='family';
@@ -40,6 +41,9 @@ const MSG_MUST_INPUT_CODE='must input code';
 const MSG_APPLICATION_SENT='application sent';
 const MSG_WRONG_CODE='wrong code';
 const MSG_DUPLICATED_APPLICATION='duplicated application';
+const MSG_INCORRECT_IDENTITY='incorrect ID card';
+
+const  REG_IDENTITY = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/i;
 
 export default class UnitApplicationScreen extends NormalScreen {
 
@@ -51,6 +55,7 @@ export default class UnitApplicationScreen extends NormalScreen {
       unitApplication:{
         realname:accountDao.userDetail.realname,
         mobile:accountDao.userDetail.mobile,
+        cardNo:"",
         unitId:0,
         communityId:0,
         userType:"O",
@@ -145,6 +150,12 @@ export default class UnitApplicationScreen extends NormalScreen {
         this.openInfoDialog(null,trans(MSG_MUST_INPUT_CODE));
         return;
     }
+    if(unitApplicationDao.choosedData.needIdentity=='Y'){
+        if(!REG_IDENTITY.test(this.state.unitApplication.cardNo)){
+          this.openInfoDialog(null,trans(MSG_INCORRECT_IDENTITY));
+          return;
+        }
+    }
     this.checkVerifyCode(this.state.unitApplication.ownerMobile,this.state.unitApplication.code,function(isSuccess){
         if(isSuccess){
             _this.state.unitApplication.unitId=_this.state.choosedData.unitId;
@@ -231,6 +242,11 @@ export default class UnitApplicationScreen extends NormalScreen {
           <Text style={MainStyle.label}>{trans(LABEL_APPLICATION)}</Text>
           <TextInput style={MainStyle.textInput} placeholder={trans(LABEL_NAME)} value={this.state.unitApplication.realname} onChangeText={(text)=>{this.state.unitApplication.realname=text;this.setState(this.state);}}/>
           <TextInput style={MainStyle.textInput} placeholder={trans(LABEL_MOBILE)} value={this.state.unitApplication.mobile} onChangeText={(text)=>{this.state.unitApplication.mobile=text;this.setState(this.state);}}/>
+          {
+            unitApplicationDao.choosedData.needIdentity=='Y'?(
+              <TextInput style={MainStyle.textInput} placeholder={trans(LABEL_IDENTIFY)} value={this.state.unitApplication.cardNo} onChangeText={(text)=>{this.state.unitApplication.cardNo=text;this.setState(this.state);}}/>
+            ):(null)
+          }          
           <Selection data={[{key:"O",value:trans(LABEL_OWNER)},{key:"F",value:trans(LABEL_FAMILY)},{key:"R",value:trans(LABEL_TENANT)}]}
             selectedValue={this.state.unitApplication.userType}
             onValueChange={(type)=>this.chooseUserType(type)}/>

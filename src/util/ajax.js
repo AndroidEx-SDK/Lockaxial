@@ -66,7 +66,8 @@ class Ajax{
     }).then((result)=>{
         cb(result);
     }).catch((error) => {
-      toastX('no network');
+      // toastX('no network:');
+      toast(JSON.stringify(error.message));
       cb({code:9999});
     }).done();
   }

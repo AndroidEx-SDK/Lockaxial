@@ -3,7 +3,7 @@
 */
 import React, { Component } from 'react';
 import {
-  View,Text,TouchableOpacity
+  ScrollView,View,Text,TouchableOpacity
 } from 'react-native';
 import {List,ListItem} from 'react-native-elements';
 
@@ -92,13 +92,13 @@ export default class UnitDetailScreen extends NormalScreen {
     this.setState(this.state);
   }
   /**
-  *打开新增车辆的页面
+  *打开新增成员的页面
   */
-  openNewCarScreen(){
+  openNewMemberScreen(){
     let _this=this;
-    this.openInputDialog(MSG_INPUT_CAR,MSG_CAR_NO,function(carNo){
-      if(carNo){
-        _this.unitDao.saveUnitCar(carNo,function(code){
+    this.openInputScreen('create unit member','member name',function(realname){
+      if(realname){
+        _this.unitDao.saveUnitMember(realname,function(code){
           if(code==0){
             _this.loadData();
           }else{
@@ -143,7 +143,7 @@ export default class UnitDetailScreen extends NormalScreen {
 
   render() {
     return (
-      <View style={MainStyle.screen}>
+      <ScrollView style={MainStyle.screen}>
         <Text style={MainStyle.label}>{this.state.item.unitName}</Text>
         <List containerStyle={MainStyle.list}>
           <ListItem
@@ -155,7 +155,10 @@ export default class UnitDetailScreen extends NormalScreen {
             hideChevron={true}
             rightTitle={Filter.unitTypeFilter(this.state.item.unitType)}/>
         </List>
-        <Text style={MainStyle.label}>{trans(UNIT_MEMBERS)}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={MainStyle.label}>{trans(UNIT_MEMBERS)}</Text>
+          <TouchableOpacity onPress={()=>this.openNewMemberScreen()}><Text style={MainStyle.link}>{trans('create unit member')}</Text></TouchableOpacity>
+        </View>
         <List containerStyle={MainStyle.list}>
           {
             this.state.unitMemberList.map((l, i) => (
@@ -181,34 +184,7 @@ export default class UnitDetailScreen extends NormalScreen {
             ))
           }
         </List>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={MainStyle.label}>{trans(UNIT_CARS)}</Text>
-          <TouchableOpacity onPress={()=>this.openNewCarScreen()}><Text style={MainStyle.link}>{trans('add')}</Text></TouchableOpacity>
-        </View>
-        <List containerStyle={MainStyle.list}>
-          {
-            this.state.unitCarList.map((l, i) => (
-              <ListItem
-                key={i}
-                hideChevron={true}
-                title={l.carNo}
-                subtitle={
-                  <View style={{flexDirection: 'row'}}>
-                    <Text style={MainStyle.innerLabel}>{Filter.carStateFilter(l.state)}</Text>
-                    {
-                       (l.state=='N'||l.state=='P')?(
-                            <TouchableOpacity onPress={()=>this.deleteCar(i)}><Text style={MainStyle.innerLink}>{trans('delete')}</Text></TouchableOpacity>
-                        ) : (
-                            null
-                        )
-                    }
-                  </View>
-                }
-              />
-            ))
-          }
-        </List>
-      </View>
+      </ScrollView>
     );
   }
 }
