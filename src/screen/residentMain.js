@@ -157,12 +157,12 @@ export default class ResidentMain extends SubScreen {
         this.subscription7 = DeviceEventEmitter.addListener('onTalkFailed', (data)=>this.onTalkFailed(data)); //呼叫室内机设备失败
         this.subscription8 = DeviceEventEmitter.addListener('unitVerify', (data)=>this.unitVerify(data));
 
-        JPushModule.addReceiveCustomMsgListener((message) => {
-            _this.pushMessageHandle(message);
-        });
-        JPushModule.addReceiveNotificationListener((message) => {
-            _this.pushMessageHandle(message);
-        });
+        //JPushModule.addReceiveCustomMsgListener((message) => {
+        //    _this.pushMessageHandle(message);
+        //});
+        //JPushModule.addReceiveNotificationListener((message) => {
+        //    _this.pushMessageHandle(message);
+        //});
         this.checkRtcStatus();
     }
 
@@ -178,8 +178,8 @@ export default class ResidentMain extends SubScreen {
         this.subscription6.remove();
         this.subscription7.remove();
         this.subscription8.remove();
-        JPushModule.removeReceiveCustomMsgListener();
-        JPushModule.removeReceiveNotificationListener();
+        //JPushModule.removeReceiveCustomMsgListener();
+        //JPushModule.removeReceiveNotificationListener();
     }
 
     pushMessageHandle(message) {

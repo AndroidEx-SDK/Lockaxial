@@ -50,7 +50,12 @@ export class AccountDao extends BaseDao {
         //     //TODO
         //   }
         // }
+        this.state = {
+            tag: '',
+            alias: '',
+        }
         this.loadAccountFromLocal();
+
     }
 
     /**
@@ -174,9 +179,6 @@ export class AccountDao extends BaseDao {
         billDao.retrieveBillProfile(); //获取账单概要信息
     }
 
-    /**
-     *根据用户名及密码登陆系统
-     */
     login(username, password, cb) {
         var _this = this;
         auth.login(username, password, _this.deviceUuid, function (result) {
@@ -202,37 +204,92 @@ export class AccountDao extends BaseDao {
                     expires: 1000 * 60 * 60 * 24 * 30 //30天过期
                 });
                 DeviceEventEmitter.emit('changeUserAccount', null); //触发用户账号改变事件
+                console.log("result :username=" + result.user.username + ",realname=" + result.user.realname);
+                console.log("userDetail :username=" + _this.userDetail.username);
                 //绑定推送信息
-                _this.pushBind();
+               // _this.pushBind();
+                console.log("pushBind :username=" + _this.userDetail.username);
                 _this.initData();
             }
             cb(result);
         });
+        /**
+         *根据用户名及密码登陆系统
+         */
     }
 
     pushBind(cb) {
-        let alias = this.userDetail.username;
-        let tags = this.getCommunityTags(this.unitList);
-        this.pushServiceBind(alias, tags, function (resultCode) {
-            if (cb) {
-                cb(resultCode)
-            }
-        });
+        this.setState({alias: this.userDetail.username});
+        this.setState({tags: this.getCommunityTags(this.unitList)});
+        console.log("alias: " + this.state.alias);
+        //this.state.tags = this.getCommunityTags(this.unitList);
+        console.log("tags: " + this.state.tags);
+        if (this.state.alias !== undefined) {
+            JPushModule.setAlias(this.state.alias, function () {
+                if (this.state.tags !== undefined) {
+                    JPushModule.setTags(this.state.tags, function () {
+                        console.log("Set alias succeed");
+                        cb(0);
+                    }, function () {
+                        cb(1);
+                    });
+                }
+            }, function () {
+                console.log("Set alias failed");
+                cb(1);
+            });
+        } else {
+            console.warn("alias is undefined ");
+        }
     }
+
+    pushBindExit(cb) {
+       // this.setState({alias: this.userDetail.username});
+        console.log("alias: " + this.state.alias);
+        //this.state.tags = this.getCommunityTags(this.unitList);
+        console.log("tags: " + this.state.tags);
+        if (this.state.alias !== undefined) {
+            JPushModule.setAlias(this.state.alias, function () {
+                if (this.state.tags !== undefined) {
+                    JPushModule.setTags(this.state.tags, function () {
+                        console.log("Set alias succeed");
+                        cb(0);
+                    }, function () {
+                        cb(1);
+                    });
+                }
+            }, function () {
+                console.log("Set alias failed");
+                cb(1);
+            });
+        } else {
+            console.warn("alias is undefined ");
+        }
+    }
+
 
     /**
      *绑定推送服务的别名
      */
     pushServiceBind(alias, tags, cb) {
-        JPushModule.setAlias(alias, function () {
-            JPushModule.setTags(tags, function () {
+        if (this.state.alias !== undefined) {
+            JPushModule.setAlias(this.state.alias, () => {
+                console.log("Set alias succeed");
                 cb(0);
             }, function () {
+                console.log("Set alias failed");
                 cb(1);
             });
-        }, function () {
-            cb(1);
-        });
+        }
+        //if (this.state.alias !== undefined) {
+        //    JPushModule.setAlias(this.state.alias, () => {
+        //        console.log("Set alias succeed");
+        //    }, () => {
+        //        console.log("Set alias failed");
+        //    });
+        //}
+
+
     }
 
     /**
@@ -330,18 +387,16 @@ export class AccountDao extends BaseDao {
                     _this.saveAccountToLocal();
                     DeviceEventEmitter.emit('changeUserAccount', null); //触发用户账号改变事件
                     _this.initData(); //更新账户信息，更新本地通知、账单信息
-                    _this.pushBind();
+                    //_this.pushBind();
                 }
                 if (cb) {
                     cb()
                 }
-                ;
             });
         } else {
             if (cb) {
                 cb()
             }
-            ;
         }
     }
 
@@ -383,7 +438,6 @@ export class AccountDao extends BaseDao {
             if (cb) {
                 cb(result)
             }
-            ;
         });
     }
 
@@ -474,7 +528,7 @@ export class AccountDao extends BaseDao {
         billDao.clear();
         this.sendLogoutToBridge();
         //绑定推送信息
-        this.pushBind();
+       // this.pushBindExit();
     }
 }
 
