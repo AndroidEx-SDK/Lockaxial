@@ -74,9 +74,12 @@ export default class Upload{
   */
   uploadFile() {
     let file=this.options.files[this.index];
+    console.log("file = "+file.toString())
     let formData = new FormData();
+    console.log("formData = "+JSON.stringify(formData))
     let fileData={uri: file.path, type: 'multipart/form-data', name: this.getFileName(file.path)};
     formData.append('Filedata',fileData);
+    console.log("file up load------------------"+JSON.stringify(formData))
     var xhr = new XMLHttpRequest();
     //xhr.setRequestHeader("Authorization",('Bearer ' + ajax.token));
     xhr.upload.addEventListener("progress", (evt)=>this.uploadProgress(evt), false);

@@ -20,8 +20,18 @@ class Ajax{
     return AppConf.APPLICATION_SERVER + "/app" + url;
   }
 
+  outputObj(obj) {
+      var description = "";
+      for (var i in obj) {
+          description += i + " = " + obj[i] + "\n";
+      }
+      console.log(description);
+  }
+
   getAppKey(){
     let key=accountDao.userInfo;
+    console.log("key = ");
+    this.outputObj(key)
     if(key){
       key=JSON.stringify(accountDao.userInfo);
       let base64=new Base64();
@@ -29,18 +39,24 @@ class Ajax{
     }else{
       key='';
     }
+    console.log("return key = ");
+      this.outputObj(key)
     return key;
   }
   /**
   *封装get方法，url为访问地址，data是参数。JSON格式，cb回调函数，返回的参数基本格式为{code:0},0表示成功，否则为失败
   */
   get(url,data,cb){
+    console.log("=============== g e t ========================");
+    console.log("data = ");
+    this.outputObj(data);
     if(data){
       data.appKey=this.getAppKey();
     }else{
       data={appKey:this.getAppKey()}
     }
-
+    console.log("data+key = ");
+      this.outputObj(data);
     if (data) {
         let paramsArray = [];
         Object.keys(data).forEach(key => paramsArray.push(key + '=' + data[key]));
@@ -51,6 +67,8 @@ class Ajax{
         }
     }
     url=this.convertUrl(url);
+    console.log("url = "+url);
+    console.log("=============== e n d ========================");
     fetch(url,{
         method: 'GET',
         headers:{
@@ -73,15 +91,23 @@ class Ajax{
   }
 
   /**
-  *封装post方法，url为访问地址，data是参数。JSON格式，cb回调函数，返回的参数基本格式为{code:0},0表示成功，否则为失败
+  * 封装post方法，url为访问地址，data是参数。JSON格式，cb回调函数，返回的参数基本格式为{code:0},0表示成功，否则为失败
   */
   post(url,data,cb){
+    console.log("=============== p o s t ========================");
+    console.log("data = ");
+      this.outputObj(data);
     if(data){
       data.appKey=this.getAppKey();
     }else{
       data={appKey:this.getAppKey()}
     }
+    console.log("data+key = ");
+      this.outputObj(data);
     url=this.convertUrl(url);
+    console.log("url = "+url);
+    console.log("jsonData = "+JSON.stringify(data));
+    console.log("=============== e n d ========================");
     fetch(url,{
         method: 'POST',
         headers:{

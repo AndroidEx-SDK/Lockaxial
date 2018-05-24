@@ -21,6 +21,7 @@ import LockHistoryDao from '../model/lockHistoryDao';
 import billDao from '../model/billDao';
 import reactBridge from '../bridge/reactBridge';
 import UDPClientBridge from '../bridge/UDPClientBridge';
+import ajax from '../util/ajax';
 const async = require("async");
 
 const windowSize = Dimensions.get('window');
@@ -33,6 +34,8 @@ const MSG_LIFT_IN = 'lift in';
 const MSG_LIFT_OUT = 'lift out';
 const MSG_CALL_FAILED = 'on call failed';
 const MSG_TALK_FAILED = 'on talk failed';
+const MSG_NO_LOGIN = 'no login'
+const MSG_NO_ROOM = 'no room'
 
 function supplement(prefix, val, len) {
     val = val + "";
@@ -348,6 +351,22 @@ export default class ResidentMain extends SubScreen {
         }
     }
 
+    openDiyuApplication(){
+        reactBridge.openDiyuApplication(accountDao.account.username,accountDao.account.password);
+    }
+
+    openInfoManagerActivity(){
+        if(accountDao.userInfo.rid>0){
+            if(accountDao.unitList.length>0){
+                reactBridge.openInfoManagerActivity(accountDao.userInfo.rid,JSON.stringify(accountDao.unitList),JSON.stringify(accountDao.currentUnit),ajax.token);
+            }else{
+                toastX(MSG_NO_ROOM);
+            }
+        }else{
+            toastX(MSG_NO_LOGIN);
+        }
+    }
+
     openFamilyDeviceScreenDirectly() {
         let _this = this;
         deviceDao.init(function (result) {
@@ -646,9 +665,16 @@ export default class ResidentMain extends SubScreen {
                                 icon="luntan" iconColor="#ff7967" onPress={()=>this.openForumScreen()}/>
                             {/* <MenuButton style={{flex:1,height:menuHeight,width:menuWidth}} title={'more'}
                              icon="gengduo" iconColor="#cacaca" onPress={()=>this.openMoreScreen()}/> */}
-                            <MenuButton style={{flex:1,height:menuHeight,width:menuWidth}} title={'family intercom'}
+                            {/*<MenuButton style={{flex:1,height:menuHeight,width:menuWidth}} title={'family intercom'}
                                         icon="duijiangjiankong" iconColor={this.state.rtcStatus==10?'#43b5ff':'#cacaca'}
-                                        onPress={()=>this.openFamilyDeviceScreen()}/>
+                                        onPress={()=>this.openFamilyDeviceScreen()}/>*/}
+                            {/*<MenuButton style={{flex:1,height:menuHeight,width:menuWidth}} title={'wisdom group'}
+                                        icon="duijiangjiankong" iconColor={this.state.rtcStatus==10?'#43b5ff':'#cacaca'}
+                                        onPress={()=>this.openDiyuApplication()}/>*/}
+
+                            <MenuButton style={{flex:1,height:menuHeight,width:menuWidth}} title={'info manager'}
+                                        icon="lishijilu" iconColor="#43b5ff"
+                                        onPress={()=>this.openInfoManagerActivity()}/>
                         </View>
                     </View>
                 </ScrollView>

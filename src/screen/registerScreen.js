@@ -83,7 +83,7 @@ export default class RegisterScreen extends NormalScreen {
           }
         });
       }else{
-        toastX(MSG_WRONG_CODE);
+        toastX(MSG_WRONG_CODE); //验证码失效
       }
     });
   }

@@ -7,6 +7,9 @@ I18n.fallbacks = true;
  */
 I18n.translations = {
   en: {
+    'no room':'Please apply for a house first',
+    'info manager':'Info Manager',
+    'wisdom group':'Wisdom Group',
     'housekeeper': 'Housekeeper',
     'community forum':'Community Forum',
     'business':'Business',
@@ -271,6 +274,9 @@ I18n.translations = {
     'Q1_A':'you need change the default language of the mobile phone in the setting pane, and then restart the APP'
   },
   zh: {
+    'no room':'请先申请房屋',
+    'info manager':'信息管理',
+    'wisdom group':'智慧社区',
     'housekeeper': '物业管家',
     'community forum':'社区',
     'business':'周边商圈',
@@ -535,6 +541,9 @@ I18n.translations = {
     'Q1_A':'我们的APP支持国际化操作，您只需要在手机的设置中，修改当前的国家及语言，重启APP后即可'
   },
   "zh-HK": {
+    'no room':'請先申請房屋',
+    'info manager':'資訊管理',
+    'wisdom group':'智慧社區',
     'housekeeper': '物業管家',
     'community forum':'社區',
     'business':'周邊商圈',
