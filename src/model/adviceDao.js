@@ -37,11 +37,9 @@ export class AdviceDao extends BaseDao {
   *初始化投诉建议数据
   */
   init(cb){
-    if(this.list.length==0){
+      console.log("初始化投诉建议信息");
+      this.list = [];
       this.load(cb);
-    }else{
-      if(cb){cb(null)}
-    }
   }
 
   /**
