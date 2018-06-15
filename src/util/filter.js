@@ -65,6 +65,22 @@ export default class Filter{
     return this.dateFilter(thisDateStr)+' '+thisTimeStr;
   }
 
+    static openTyleFilter(value) {
+        if(value == 'M'){
+            return trans('call open');
+        }else if(value == 'P'){
+            return trans('password open');
+        }else if(value == 'F'){
+            return trans('face open');
+        }else if(value == 'A'){
+            return trans('app open');
+        }else if(value == 'C'){
+            return trans('card open');
+        }else{
+            return trans('no openType');
+        }
+    }
+
   /**
   *文件名显示过滤
   */

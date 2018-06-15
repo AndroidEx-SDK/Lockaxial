@@ -86,7 +86,8 @@ export default class LockHistoryScreen extends NormalListScreen {
                       title={item.lockName}
                       onPress={()=>this.openHistoryDetail(rowID)}
                       avatar={item.imageUrl?{uri:item.imageUrl}:(require('../image/default.png'))}
-                      subtitle={Filter.datetimeFilter(item.creDate)}>
+                      subtitle={Filter.datetimeFilter(item.creDate)}
+                      rightTitle={Filter.openTyleFilter(item.type)}>
                     </ListItem>
                 }>
           </ListView>

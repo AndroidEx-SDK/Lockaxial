@@ -7,6 +7,12 @@ I18n.fallbacks = true;
  */
 I18n.translations = {
   en: {
+    'no openType':'Unknown',
+    'call open':'Call open',
+    'password open':'Password open',
+    'face open':'Face open',
+    'app open':'App open',
+    'card open':'Card open',
     'no room':'Please apply for a house first',
     'info manager':'Info Manager',
     'wisdom group':'Wisdom Group',
@@ -274,6 +280,12 @@ I18n.translations = {
     'Q1_A':'you need change the default language of the mobile phone in the setting pane, and then restart the APP'
   },
   zh: {
+    'no openType':'未知',
+    'call open':'呼叫开门',
+    'password open':'密码开门',
+    'face open':'人脸开门',
+    'app open':'App 开门',
+    'card open':'刷卡开门',
     'no room':'请先申请房屋',
     'info manager':'信息管理',
     'wisdom group':'智慧社区',
@@ -541,6 +553,12 @@ I18n.translations = {
     'Q1_A':'我们的APP支持国际化操作，您只需要在手机的设置中，修改当前的国家及语言，重启APP后即可'
   },
   "zh-HK": {
+    'no openType':'未知',
+    'call open':'呼叫開門',
+    'password open':'密碼開門',
+    'face open':'人臉開門',
+    'app open':'App 開門',
+    'card open':'刷卡開門',
     'no room':'請先申請房屋',
     'info manager':'資訊管理',
     'wisdom group':'智慧社區',

@@ -56,7 +56,7 @@ export default class ChangePasswordScreen extends NormalScreen {
         <View style={{marginTop:30,marginBottom:30,alignItems:'center'}}>
           <CoverControl coverImage={this.state.headimgurl} size={{width:90,height:90}} onChangeCover={(cover)=>this.changeCover(cover)}/>
         </View>
-        <TextInput style={MainStyle.textInput} placeholder={trans(LABEL_REALNAME)} value={this.state.realname} onChangeText={(text)=>{this.state.realname=text;this.setState(this.state);}}/>
+        <TextInput editable={false} style={MainStyle.textInput} placeholder={trans(LABEL_REALNAME)} value={this.state.realname} onChangeText={(text)=>{this.state.realname=text;this.setState(this.state);}}/>
         <View style={{paddingTop:10,paddingLeft:5,paddingRight:5,flexDirection:'row',alignItems:'center'}}>
           <View style={{flex:1}}><Button onPress={()=>this.back()} title={trans('cancel')}/></View>
           <View style={{flex:1}}><Button backgroundColor='#007aff' onPress={()=>this.save()} title={trans('confirm')}/></View>
