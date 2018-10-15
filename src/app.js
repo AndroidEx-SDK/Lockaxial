@@ -113,6 +113,10 @@ BackAndroid.addEventListener('hardwareBackPress', function () {
         return true;
     } else {
         systemExitTryTime = 0;
-        return false;
+        //return false;
+        
+        //xiaozd add
+        reactBridge.sendMainMessage(70000, null);
+        return true;
     }
 });

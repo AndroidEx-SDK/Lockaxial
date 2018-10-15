@@ -96,11 +96,13 @@ export default class LockScreen extends NormalScreen {
   *打开选择的门禁
   */
   openLock(rowID){
+    console.log("select Item RowId = "+rowID);
     var item=accountDao.communityLockList[rowID];
     var append="";
     if(accountDao.currentUnit&&accountDao.currentUnit.unitNo){
       append="-"+accountDao.currentUnit.unitNo;
     }
+    console.log("send open door item info = "+item.lockKey+append);
     reactBridge.sendMainMessage(20033,item.lockKey+append);  //向原生部分发送消息，打开指定的门禁
   }
 
